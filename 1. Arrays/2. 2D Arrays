@@ -1,0 +1,33 @@
+1. Default values in an Array
+    int marks = new marks[100];  – default value is 0
+    boolean attendance = new attendance[100]; – default value is false
+    String name = new name[200]; – default value is NULL
+
+2. Copying an Array
+    To copy a variable value to another variable we simply do
+    int a = 10;
+    int b = a;
+
+    but when we do the same thing in array
+    Int[]marks = {1,2,3};
+    Int[] numbers = marks;
+    Instead of copying everything to numbers array, both marks and numbers array will point to marks array
+
+    The correct way 1-
+    int[] numbers = Arrays.copyOf(marks,marks.length);
+
+    The correct way 2-
+    int[]numbers = new int[100];
+    for(int i = 0; i<marks.length; i++)
+    {
+       Numbers[i] = marks[i];
+    }
+
+    The idea of 2D array came when array failed to store data efficiently in some cases
+    Example-you have to store marks of 20 students in 15 subjects each. Now to do this in array you have to create 15 separate arrays 
+    A 2D array has rows and columns. The 2D array is also called a Matrix.
+
+3. Declaration of 2D Array
+    int[][] marks = new int[rows][columns];
+    int[][] marks = new int[5][15];
+    int[][] marks = {{1,2,3,4},{3,2,4,5},{7,8,4,1}};
