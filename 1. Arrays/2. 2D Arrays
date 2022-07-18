@@ -31,3 +31,22 @@
     int[][] marks = new int[rows][columns];
     int[][] marks = new int[5][15];
     int[][] marks = {{1,2,3,4},{3,2,4,5},{7,8,4,1}};
+
+4. Access elements in a 2D Array
+    This is the marks array. To access element 18 i can write
+    Marks[0][0] – marks array at row 0 column 0
+
+5. Traverse in a 2D Array
+    We traverse in 2D array using nested loops
+    for(int i = 0; i<row; i++){
+         for(int j = 0; j<columns; j++){
+        Marks[i][j] = i*j;
+      }
+    }
+
+6. Taking input in a 2D Array
+    for(int i = 0; i<row; i++){
+         for(int j = 0; j<columns; j++){
+        Marks[i][j] = sc.nextInt();
+      }
+    }
