@@ -1,0 +1,25 @@
+  Lets see a question which cannot be solved easily just using 
+	Variables.
+  
+Q.Store marks of 100 students in a class and check who got highest 
+	marks?
+	Its a tedious task to create 100 variables and store each of the
+	student marks and then compare it would lead to lots of
+	Complications.
+
+Q. What is an ARRAY?
+    An array is a data structure which stores collection of values of
+    The same data type stored in contiguous memory location.
+
+Q. Declaration of an Array
+    Int[] a or int a[] 
+
+Q. Create an Array of integers
+    Int[] a = new int[100];
+
+Q. Initialise an Array
+    Int[] a = {1,2,3,4,5,6,7};
+    This will create an array of size 7. Size of array once declared cannot be changed.
+
+Q. Access elements of an Array
+    We access elements of an array using index
