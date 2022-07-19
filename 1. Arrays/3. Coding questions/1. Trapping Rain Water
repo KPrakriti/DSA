@@ -1,0 +1,37 @@
+/*
+Q. Consider its raining and you have been given height of N buildings, find out how many units of water can be stored in between the buildings. Consider width
+   of each building to be 1 unit.
+   
+   height array - [0,1,2,0,0,3,1,0,3]
+   output - 9
+*/
+
+//Approach 1: BRUTE FORCE
+//TC - O(N^2) SC - O(1)
+
+class Solution {
+    public int trap(int[] height) {
+        int waterStored = 0;
+        int n = height.length;
+        
+        for(int i = 1; i<n-1; i++) //checking for each building
+        {
+            int leftMax = 0;
+            int rightMax = 0;
+            for(int j = i; j>=0; j--) //checking in left of each i
+            {
+                if(height[j]>leftMax)
+                    leftMax = height[j];
+            }
+            for(int j = i; j<n; j++) //checking in right of each i
+            {
+                if(height[j]>rightMax)
+                    rightMax = height[j];
+            }
+           waterStored += Math.min(leftMax,rightMax)-height[i]; 
+        }
+        
+        return waterStored;
+    }
+}
+
