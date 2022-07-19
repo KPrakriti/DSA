@@ -35,3 +35,47 @@ class Solution {
     }
 }
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Approach 2: using extra space
+//TC - O(3N) SC - O(2N)
+
+class Solution {
+    public int trap(int[] height) {
+        
+        int storedWater = 0;
+        int n = height.length;
+        int[] leftMaxHeight = new int[n];
+        int[] rightMaxHeight = new int[n];
+        leftMaxHeight[0] = height[0];
+        rightMaxHeight[n-1] = height[n-1];
+        
+        for(int i = 1; i<n; i++)
+        {
+            if(height[i] > leftMaxHeight[i-1])
+            {
+                leftMaxHeight[i] = height[i];
+            }
+            else
+            {
+                leftMaxHeight[i] = leftMaxHeight[i-1];
+            }
+        }
+        for(int i= n-2; i>=0; i--)
+        {
+            if(height[i] > rightMaxHeight[i+1])
+            {
+                rightMaxHeight[i] = height[i];
+            }
+            else
+            {
+                rightMaxHeight[i] = rightMaxHeight[i+1];
+            }
+        }
+        for(int i = 1; i<n-1; i++)
+        {
+            storedWater += Math.min(leftMaxHeight[i],rightMaxHeight[i]) - height[i];
+        }
+        return storedWater;
+    }
+}
