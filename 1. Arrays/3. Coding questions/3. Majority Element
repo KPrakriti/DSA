@@ -1,0 +1,14 @@
+//An element which appears more than n/2 times is a majority elemnet.
+//Approach 1 - We sort the array and the element at index n/2 will always be a majority elemnent.
+//TC - O(NlogN) SC - O(1)
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int len = nums.length;
+        
+        Arrays.sort(nums);
+        int ans = nums[len/2];
+        
+        return ans;
+    }
+}
