@@ -41,3 +41,46 @@ class Solution {
         return ans;
     }
 }
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Approach 3 - Moore's Voting Algorithm - TC O(N) SC O(1)
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int len = nums.length; 
+        int majorEl = 0;
+        int count = 1;
+        int ans = 0;
+        
+        //run loop from i = 1
+        for(int i = 1; i<len; i++)
+        {
+            if(nums[majorEl] == nums[i])
+            {
+                count++;
+            }
+            else
+            {
+                count--;
+            }
+            if(count == 0)
+            {
+                majorEl = i;
+                count = 1;
+            }
+        }
+        count = 0;
+        for(int i = 0; i<len; i++)
+        {
+            if(nums[i] == nums[majorEl])
+            {
+                count++;
+                if(count>len/2)
+                {
+                    ans = nums[majorEl];
+                }
+            }
+        }
+        return ans;
+    }
+}
