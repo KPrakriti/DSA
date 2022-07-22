@@ -1,3 +1,69 @@
+//APPROACH 1 - BRUTE FORCE - O(N^2)
+//for each i check if the element is present in the given array. 
+// if i is present in the array turn the flag to 1 and break out of the loop
+// while you come out of the nested for - check if flag is still 0 - this means the element is missing
+//print i and break 
+
+public class missingNumber { 
+	public static void main(String[] args) { 
+		int[] nums = {9,7,6,8,1,5,3,2};
+		int n = 9;
+		int flag;
+		for(int i = 1; i<=n; i++)
+		{
+			flag = 0;
+			for(int j = 0; j<n-1; j++)
+			{
+				if(i == nums[j])
+				{
+					flag = 1;
+					break;
+				}
+			}
+			if(flag == 0)
+			{
+				System.out.println(i);
+				break;
+			}
+		}	
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//APPROACH 2 - Take the sum of all array element and then take the sum from 1 to N 
+               subtract both - the ans you get will be the missing number
+               TC - O(N) 
+               
+public class wordsWayToLong { 
+
+	public static void main(String[] args) { 
+		int[] nums = {9,7,6,8,1,5,3,2};
+		int n = 9;
+		int arrSum = 0;
+		int originalSum = 0;
+		int ans = 0;
+		
+		//get original sum
+		for(int i = 1; i<=n; i++)
+		{
+			originalSum += i;
+		}
+		
+		//get array element sum
+		for(int i = 0; i<n-1; i++)
+		{
+			arrSum += nums[i];
+		}
+		
+		//get difference
+		ans = originalSum - arrSum;
+		System.out.println(ans);
+	}
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//APPROACH 3 - using XOR 
+
 import java.util.*;
   import java.io.*;
   
