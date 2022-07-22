@@ -1,4 +1,4 @@
-//APPROACH 1 - BRUTE 
+//APPROACH 1 - BRUTE TC O(N^2)
 
 public class maxSumKElements{ 
 	public static void main(String[] args) { 
@@ -19,3 +19,29 @@ public class maxSumKElements{
 	}
 }
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//APPROACH 2 - Using Slinding Window - TC O(N)
+
+public class maxSumKElements{ 
+	public static void main(String[] args) { 
+		int[] nums = {5,10,1,388,99};
+		int k = 2;
+		int currSum = 0;
+		int maxSum = 0;
+		
+		//find the sum for 1st window
+		for(int i = 0; i<k; i++)
+		{
+			currSum += nums[i];
+		}
+		maxSum = currSum;
+		
+		
+		for(int i = k; i<nums.length; i++)
+		{
+			currSum += nums[i] - nums[i-k];
+		}
+		maxSum = Math.max(maxSum,  currSum);
+		System.out.println(maxSum);
+	}
+}
