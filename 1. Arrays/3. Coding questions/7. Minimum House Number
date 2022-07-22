@@ -1,0 +1,38 @@
+//Prepbytes - Arrays 
+
+public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int testCases = sc.nextInt();
+      while(testCases-->0)
+      {
+        int hNo = sc.nextInt(); //house number input
+        int[] rent = new int[hNo];
+        int resultHNO;
+        
+        for(int i = 0; i<hNo; i++)
+        {
+          rent[i] = sc.nextInt();
+        }
+        
+        int leastRent = rent[0];
+        
+        for(int i = 1; i<hNo; i++)
+        {
+          leastRent = Math.min(leastRent, rent[i]);
+        }
+        
+        for(int i = 0; i<hNo; i++)
+        {
+          if(rent[i] == leastRent)
+          {
+            resultHNO = i;
+            System.out.println(resultHNO);
+          }
+        }
+        
+      }
+      
+    }
+  }
