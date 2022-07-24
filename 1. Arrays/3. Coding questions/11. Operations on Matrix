@@ -1,0 +1,59 @@
+//Addition and Multiplication on matrix
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int m = sc.nextInt(); 
+      int n = sc.nextInt();
+      
+      int[][] mat1 = new int[m][n];
+      int[][] mat2 = new int[m][n];
+      //taking input for mat1
+      for(int row = 0; row<m; row++)
+      {
+        for(int col = 0; col<n; col++)
+        {
+          mat1[row][col] = sc.nextInt();
+        }
+      }
+      //taking input for mat2
+      for(int row = 0; row<m; row++)
+      {
+        for(int col = 0; col<n; col++)
+        {
+          mat2[row][col] = sc.nextInt();
+        }
+      }
+      
+      //addition
+      int[][] add = new int[m][n];
+      for(int row = 0; row<m; row++)
+      {
+        for(int col = 0; col<n; col++)
+        {
+          add[row][col] = mat1[row][col]+mat2[row][col];
+          System.out.print(add[row][col]+" ");
+        }
+        System.out.println();
+      }
+      //multiplication
+      int[][] mul = new int[m][n];
+      for(int row = 0; row<m; row++)
+      {
+        for(int col = 0; col<n; col++)
+        {
+          mul[row][col] = 0;
+          for(int k = 0; k<m; k++)
+          {
+          mul[row][col] += mat1[row][k]*mat2[k][col];
+          }
+          System.out.print(mul[row][col]+" ");
+        }
+        System.out.println();
+      }
+    }
+  }
