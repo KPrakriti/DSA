@@ -1,0 +1,52 @@
+//PrepBytes
+
+public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int m = sc.nextInt();
+      int n = sc.nextInt();
+      int[][] arr = new int[m][n];
+      for(int row = 0; row<m; row++)
+      {
+        for(int col = 0; col<n; col++)
+        {
+          arr[row][col] = sc.nextInt();
+        }
+      }
+      //lower traingle
+      int[][] lowerTri = new int[m][n];
+      for(int row = 0;row<m; row++)
+      {
+        for(int col = 0; col<=row; col++)
+        {
+          lowerTri[row][col] = arr[row][col];
+          System.out.print(lowerTri[row][col]+" ");
+        }
+        for(int k = row+1; k<n; k++)
+        {
+          lowerTri[row][k] = 0;
+          System.out.print(lowerTri[row][k]+" ");
+        }
+        System.out.println();
+      }
+      int[][]upperTri = new int[m][n];
+      for(int row = 0; row<m; row++)
+      {
+        for(int col = 0; col<n; col++)
+        {
+          if(row>col)
+          {
+            upperTri[row][col] = 0;
+            System.out.print(upperTri[row][col]+" ");
+          }
+          else
+          {
+          upperTri[row][col] = arr[row][col];
+          System.out.print(upperTri[row][col]+" ");
+          }
+        }
+        System.out.println();
+      }
+    }
+  }
