@@ -1,0 +1,49 @@
+//PrepBytes
+A simple problem statement with no stories: Given an array of positive integer, 
+find out all the elements that are greater than or equal to all the elements to it's right side.
+
+INPUT
+2 //testcases
+5 //length of array
+1 2 3 4 5 
+4
+1 4 3 2
+
+OUTPUT
+5
+2 3 4 
+
+//The last element is always a leader because there is no elemnt after it
+//rest for all elements traverse from element at n-2 index 
+//keep a maxx variable equals to the arr[n-1]
+//keep comparing it with arr[i] if arr[i] is greater than maxx print that arr[i] and update the maxx
+
+public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int testCases = sc.nextInt();
+      while(testCases-->0)
+      {
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i<n; i++)
+        {
+          arr[i] = sc.nextInt();
+        }
+        System.out.print(arr[n-1]+" ");
+        int maxx = arr[n-1];
+        for(int i = n-2; i>=0; i--)
+        {
+          if(arr[i] >= maxx)
+          {
+            System.out.print(arr[i]+" ");
+            maxx = arr[i];
+          }
+        }
+        
+        System.out.println();
+      }
+      
+    }
+  }
