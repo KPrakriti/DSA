@@ -1,0 +1,59 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int testCases = sc.nextInt();
+      while(testCases-->0)
+      {
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i =0; i<n; i++)
+        {
+          arr[i] = sc.nextInt();
+        }
+        int[] arr1 = new int[n];
+        int[] arr2 = new int[n];
+        int maxxDiff = 0;
+        for(int i = 0; i<n; i++)
+        {
+          arr1[i] = arr[i]+i;
+          arr2[i] = arr[i]-i;
+        }
+        int min1 = 100001;
+        int max1 = 0;
+        int ans1 = 0;
+        int min2 = 100001;
+        int max2 = 0;
+        int ans2 = 0;
+        for(int i = 0; i<n; i++)
+        {
+          if(arr1[i] < min1)
+          {
+            min1 = arr1[i];
+          }
+          if(arr1[i] > max1)
+          {
+            max1 = arr1[i];
+          }
+          if(arr2[i] < min2)
+          {
+            min2 = arr2[i];
+          }
+          if(arr2[i] > max2)
+          {
+            max2 = arr2[i];
+          }
+        }
+        ans1 = max1-min1;
+        ans2 = max2-min2;
+        maxxDiff = Math.max(ans1,ans2);
+        System.out.println(maxxDiff);
+      }
+      
+    }
+  }
