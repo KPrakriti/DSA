@@ -6,41 +6,58 @@ import java.util.*;
   public class Main {
     public static void main(String args[]) throws IOException {
       
-    Scanner o=new Scanner(System.in);
-    int n=o.nextInt();
-    int ar[]=new int[n];
-    for(int i=0;i<n;i++){
-      ar[i]=o.nextInt();
-    }
+      Scanner sc = new Scanner(System.in);
+      int n = sc.nextInt();
+      int[] arr = new int[n];
+      for(int i =0; i<n; i++)
+      {
+        arr[i] = sc.nextInt();
+      }
+      
     int visitcount[]=new int[100001];
     int previndex[]=new int[100001];
     int diff[]=new int[100001];
-    for(int i=0;i<n;i++){
-      if(visitcount[ar[i]]==-2)
-      continue;
-        visitcount[ar[i]]++;
-      if(visitcount[ar[i]]==2){
-         diff[ar[i]]=i-previndex[ar[i]];
+    
+    for(int i=0;i<n;i++)
+    {
+      if(visitcount[arr[i]]==-1)
+      {
+         continue;
       }
-      else if (visitcount[ar[i]]>=2){
-        if(i-previndex[ar[i]]!=diff[ar[i]]){
-          visitcount[ar[i]]=-2;
+      else
+      {
+         visitcount[arr[i]]++;
+      }
+      if(visitcount[arr[i]]==2)
+      {
+         diff[arr[i]]=i-previndex[arr[i]];
+      }
+      else if(visitcount[arr[i]]>2)
+      {
+        if(i-previndex[arr[i]]!=diff[arr[i]])
+        {
+          visitcount[arr[i]]=-1;
           continue;
         }
       }
-      previndex[ar[i]]=i;
+      previndex[arr[i]]=i;
     }
     int count=0;
-    for(int i=0;i<visitcount.length;i++){
-      if(visitcount[i]>0){
+    for(int i=0;i<visitcount.length;i++)
+    {
+      if(visitcount[i]>0)
+      {
         count++;
       }
     }
   System.out.println(count);
-  for(int i=0;i<visitcount.length;i++){
-    if(visitcount[i]>0){
+  for(int i=0;i<visitcount.length;i++)
+  {
+    if(visitcount[i]>0)
+    {
       System.out.println(i+" "+diff[i]);
     }
   }
+      
     }
   }
