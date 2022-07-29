@@ -1,0 +1,214 @@
+What is string in Java?
+Strings is used to store the sequence of characters. String in Java is not a primitive data type like int, float, long. String is a class that is defined in the java.lang package.
+
+How to use String if it's a class?
+String prep = “prepbytes”;
+We created an object of string class and pointed it to prepbytes.
+They are stored as a character array in the heap memory.
+
+String constructors
+String string = new String(); //creates a new string in memory with no characters
+
+Create a string prepbytes using constructors
+String string = new String(“Prepbytes”); 
+//creates a new string containing same seq of characters given in argument
+
+Create string using a character array
+Char chars[] = {‘a’, ‘b’, ‘c’};
+String s = new String(chars)
+Output - “abc” created as string in the memory.
+
+String Builders
+We can also create string using string builders
+StringBuilder builder = new StringBuilder(“Prepbytes”);
+
+Concatenation of two strings
+Java allows + operator to join two strings
+String msg1 = “prep”;
+String msg2 = “bytes”;
+String message = msg1 + msg2;
+System.out.println(message);
+Output - “prepbytes”
+
+Concatenation of int and strings
+Int roll = 35;
+String id = “PG”+roll;
+Output - “PG35”;
+
+String length
+name.length();
+
+Strings Equality
+String s1 = new String(“prepbytes”);
+String s2 = new String(“Prebbytes”);
+System.out.println(s1 == s2);
+The print statement should return true but it returns false.
+
+When we create string s1 and s2 - string objects in heap memory are created and s1 points to prepbytes and s2 points to prepbytes. In the print statement we are checking if s1 is equal to s2. S1 and s2 are two different objects thus it gives false
+
+String equals keyword
+equals keyword is used to check wether two string has same set of characters or not.
+s1.equals(s2) - returns true or false
+s1.equalIgnoreCase(s2); compares not on the basis of upper/lower case 
+s1.equals(“prepbytes”); - compare string object against a string constant 
+
+Strings Pool
+String s1 = “Prepbytes”;
+String s2 = “Prepbytes”;
+
+When we created s1 - “prepbytes” was added in the heap memory
+Then we created string s2 same as s1. Now Java first checks if “Prepbytes” already exists in the string pool. It sees yes it does so it says s2 to point to the same string s1 is pointing in the memory.
+Therefore, now when we do if(s1 == s2) will return TRUE.
+
+But why this happened because earlier we saw that it returns false as it compares the objects s1 and s2 and both were different :/
+
+Using String s1 = “Prepbytes”; this syntax memory is created in the string pool and when another object tries to point to the exactly same set of characters then java first checks if it already exists in the string pool. If yes it say s2 will also point to the string s1 is pointing
+
+Using String s1 = new String(“Prepbytes”); - memory is created outside the string pool in heap memory. In heap memory java does not check if a string already exists and it will always point a new object to a new string. Hence we will use equals keyword in this case
+
+String Join
+If you need to put multiple string together separated by a delimiter then use static Join method.
+Whenever we have a static method we can access the method using the class name.
+String all = String.join(“/”,”P”,”R”,”EP”,”BYTES”);
+In the above statement “/” - this is the delimiter and rest are the strings we are trying to join
+OUTPUT - P/R/EP/BYTES
+
+Most common usage - we have 3 strings date, month, year and we want to combine it using a “/” so we can use Join
+String all = String.join(“/”,”18”,”08”,”2022);
+
+String Methods for Modifying the strings
+String s = “Prepbytes”;
+String s1 = s.substring(0,3); //0 to 2
+We use the substring method when we want to print some of the part from the original string
+S1 will contain the characters from String s from index 0 to 2
+
+s = s.replace('p','b');
+System.out.println(s);
+OUTPUT - Prebbytes
+
+s = s.toUpperCase();
+System.out.println(s);
+OUTPUT - PREBBYTES
+
+s = s.toLpperCase();
+System.out.println(s);
+OUTPUT - prebbytes
+
+Character Extraction
+
+“PrepBytes” - I want to get the character at index 1 
+Char ch = “Prepbytes”.charAt(1);
+OUTPUT - r
+
+I want to create a character Array which contains characters from “PrepBytes”
+Char buf[] = new char[3];
+s.getChars(start,end,buf,start_index_of_buf);
+
+Start - the start index in string s 
+End - the end index from string s
+Buf - char arr name where you want to store the characters
+Start_index_of_buf - from which index you want to store the characters in buf arr
+
+char buf[] = new char[3];
+s.getChars(0,3,buf,0);
+for(int i = 0; i<buf.length; i++)
+{
+   System.out.print(buf[i]+" ");
+}
+OUTPUT - P r e
+
+toCharArray() - this method converts string to character array
+char buff[] = s.toCharArray();
+for(int i = 0; i<buff.length; i++)
+{
+    System.out.print(buff[i]+" ");
+}
+OUTPUT - P r e b b y t e s
+
+Searching Strings
+indexOf() - searches first occurrence of a character or a substring
+lastIndexOf() - searches last occurrence of a character or a substring
+
+String s = “Hi how are you?”;
+s.indexOf(‘H’); — 0
+s.lastIndexOf(‘h’); — 3
+s.indexOf(“Hi”); — 0
+s.indexOf(“Hi”, 5); — 0 //stops searching at index 5
+s.lastindexOf(“Hi”,5); — -1 //starts searching from index 5
+
+Strings are Immutable. Strings are Final in java
+Immutable - Meaning once created you cannot modify the content of a string.
+If you modify by using toUpperCase() or toLowerCase() or any other method. It always results in a new string.
+String s = “prepbytes”;
+s.substring(0,3);
+System.out.println(s);
+
+OUTPUT - prepbytes
+
+Why are strings immutable in Java?
+1.String pool
+When we created Strings s1 = “prepbytes”
+And String s2 = “prepbytes” 
+In the String pool s1 and s2 both were pointing to the same string. So if we modify s1 then even if we don’t want s2 will also get modified. This is the reason why strings are immutable in Java.
+
+2. Thread Safety
+When multiple threads are pointing to the same string then changing the string will leas to unwanted results. 
+
+3. Security
+The passwords are nothing but strings. Now if someone hacks and tries to change your password lets say by doing pwd.toUpperCase(); the value in pwd remains intact and this is also one of the reasons why Strings are immutable.
+
+4. Hashcode
+We use strings as key in maps. These strings are converted into hashcodes and they are cached for faster operations.lets say the string is “prep” then hash value of “prep” is cached. Next time when we need to search for this key the operation will be faster. If you go and change the string the hash code will also change which will lead to different result.
+
+Issues with Immutability of String class
+Since the Strings are immutable. Everytime a new String has to be created and the older string has to be discarded. This leads to the creation of lots of temporary garbage in the heap
+
+To resolve this problem java provides us two classes 
+String Buffer
+String Builder
+
+String Buffer
+String Buffer can be modified
+The size of string buffer keeps on changing depending on the no. of characters it is holding.
+
+They are mutable counterparts of string.
+String Buffer may have characters and substrings inserted in the middle and appended in the end
+String Buffer will automatically grow to make room for such additions and often has more characters pre allocated than are actually needed, to allow room for growth.
+.
+How to create String Buffer Object?
+StringBuffer str = new StringBuffer(); //creates empty string
+Whenever we create a string using this we get the length as 0 and capacity as 16
+
+append() - a method used to add values at the end of a string
+
+str.append(“prepbytes”);
+System.out.print(str);
+OUTPUT - prepbytes.
+
+Again if I do str.append(“Program”);
+OUTPUT - prepbytesProgram.
+
+Using StringBuffer the same string value is getting modified.
+
+We can also append characters and integer values to a string 
+
+str.append(‘A’);
+str.append(100000);
+OUTPUT - prepbytesProgramA100000
+
+StringBuffer Capacity VS Length
+StringBuffer str = new Stringbuffer(“prepbytesIsNice”);
+str.length(); //this will give me the length of the current string 
+str.capacity(); // this will give me the max capacity of string buffer that is 16
+
+What happened if the length becomes greater than capacity?
+Then reallocation happens.
+To avoid this capacity is given to string buffer. 
+
+String Buffer Constructors
+StringBuffer str = new StringBuffer(); //constructor
+
+String s = “PrepBytes”;
+StringBuffer str  = new StringBuffer(s);
+str.append(“Program”);
+
