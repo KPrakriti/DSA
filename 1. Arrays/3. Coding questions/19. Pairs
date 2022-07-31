@@ -7,32 +7,54 @@ import java.util.*;
     public static void main(String args[]) throws IOException {
       
     Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int m = sc.nextInt();
-		int[] qtiesX = new int[n + 1];
-		int[] qtiesY = new int[n + 1];
-		int withoutX = 0, withoutY = 0;
-		int x = sc.nextInt();
-		int y = sc.nextInt();
-		for (int i = 1; i < m; i++) {
-			int a = sc.nextInt();
-			int b = sc.nextInt();
-			if (a != x && b != x){
-				qtiesX[a]++;
-				qtiesX[b]++;
-				withoutX++;
-			}
-			if (a != y && b != y) {
-				qtiesY[a]++;
-				qtiesY[b]++;
-				withoutY++;
-			}
-		}
-		for (int i = 0; i < n + 1; i++) 
-			if (qtiesX[i] == withoutX || qtiesY[i] == withoutY) {
-				System.out.println("YES");
-				return;
-			}
-		System.out.println("NO");
+    int n = sc.nextInt(); //upperBound
+    int m = sc.nextInt(); //total number of pairs given
+    int arr[][] = new int[m][2]; 
+    // input
+    for(int i=0;i<m;i++)
+    {
+      for(int j=0; j<2; j++)
+      {
+        arr[i][j] = sc.nextInt();
+      }
+    }
+     int freq1[]=new int[n+1];
+     int freq2[]=new int[n+1];
+     int c1 = 0, c2 = 0;
+    int x=arr[0][0];
+    for(int i=0;i<m;i++)
+    {
+       if(arr[i][0]==x || arr[i][1]==x)
+        {
+          c1 +=1;
+        }
+        else
+        {
+          freq1[arr[i][0]] +=1;
+          freq1[arr[i][1]] +=1;
+        }
+    }
+    //System.out.println(count);
+    y=arr[0][1];
+    for(int i=0;i<m;i++)
+    {
+       if(arr[i][0]==y || arr[i][1]==y)
+        {
+          c2 +=1;
+        }
+        else
+        {
+          freq2[arr[i][0]] +=1;
+          freq2[arr[i][1]] +=1;
+        }
+    }
+    String isPair="NO";
+          for(int i=0;i<n+1;i++){
+              if(c1+freq1[i]==m||c2+freq2[i]==m){
+                    isPair="YES";
+                    break;
+              }
+          }
+          System.out.println(isPair);
     }
   }
