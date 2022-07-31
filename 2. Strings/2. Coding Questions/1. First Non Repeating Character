@@ -1,0 +1,76 @@
+//Given a String s, find the first non-repeating character
+
+APPROACH 1: BRUTE FORCE: TC O(N^2)
+
+class Solution
+{
+    //Function to find the first non-repeating character in a string.
+    static char nonrepeatingCharacter(String S)
+    {
+       int count = 0; 
+       char ans = S.charAt(0);
+       
+       for(int i = 0; i<S.length()-1; i++)
+       {
+          for(int j = i+1; j<S.length(); j++)
+          {
+            if(S.charAt(i) == S.charAt(j)
+            {
+               count++;
+            }
+          }
+          if(count == 0)
+          {
+            ans = S.charAt(i);
+            break;
+          }
+       }
+       if(count>0)
+       {
+         ans = '$';
+       }
+       return ans;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+APPROACH 2: OPTIMIZED: TC O(N) 
+1. Maintain a freq array to store the occurence of each character from thw given String
+2. Declare an empty char variable
+3. use for loop to calculate and fill the freq array with the characters freq
+4. Again iterate through the String S and check if freq[S.charAt(i) == 1] meaning if any charcater occured only 1 number of times
+   The first characetr that occured only 1 number of time put that into the char ans and break
+5. If you never find the freq[S.charAt(i) == 1 then put '$' in ans (mentioned in question)
+6. Return ans
+
+class Solution
+{
+    //Function to find the first non-repeating character in a string.
+    static char nonrepeatingCharacter(String S)
+    {
+        int[] freq = new int[128];
+        char ans = ' ';
+        for(int i = 0; i<freq.length; i++)
+        {
+            freq[i] = 0;
+        }
+        for(int i = 0; i<S.length(); i++)
+        {
+            freq[S.charAt(i)] = freq[S.charAt(i)]+1;
+        }
+        for(int i = 0; i<S.length(); i++)
+        {
+            if(freq[S.charAt(i)] == 1)
+            {
+                ans = S.charAt(i);
+                break;
+            }
+            else
+            {
+                ans = '$';
+            }
+        }
+        return ans;
+    }
+}
+
