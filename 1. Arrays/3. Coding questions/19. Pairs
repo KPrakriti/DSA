@@ -6,55 +6,55 @@ import java.util.*;
   public class Main {
     public static void main(String args[]) throws IOException {
       
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt(); //upperBound
-    int m = sc.nextInt(); //total number of pairs given
-    int arr[][] = new int[m][2]; 
-    // input
-    for(int i=0;i<m;i++)
-    {
-      for(int j=0; j<2; j++)
+      Scanner sc = new Scanner(System.in);
+      int upperBound = sc.nextInt();
+      int totalPairs = sc.nextInt();
+      int[][] matPairs = new int[totalPairs][2];
+      for(int row = 0; row<totalPairs; row++)
       {
-        arr[i][j] = sc.nextInt();
+        for(int col = 0; col<2; col++)
+        {
+          matPairs[row][col] = sc.nextInt();
+        }
       }
-    }
-     int freq1[]=new int[n+1];
-     int freq2[]=new int[n+1];
-     int c1 = 0, c2 = 0;
-    int x=arr[0][0];
-    for(int i=0;i<m;i++)
-    {
-       if(arr[i][0]==x || arr[i][1]==x)
+      int x = matPairs[0][0];
+      int y = matPairs[0][1];
+      int c1 = 0, c2 = 0;
+      int[] freq1 = new int[upperBound+1];
+      int[] freq2 = new int[upperBound+1];
+      
+      for(int row = 0; row<totalPairs; row++)
+      {
+        if(matPairs[row][0] == x || matPairs[row][1] == x)
         {
-          c1 +=1;
+          c1++;
         }
         else
         {
-          freq1[arr[i][0]] +=1;
-          freq1[arr[i][1]] +=1;
+          freq1[matPairs[row][0]]++;
+          freq1[matPairs[row][1]]++;
         }
-    }
-    //System.out.println(count);
-    y=arr[0][1];
-    for(int i=0;i<m;i++)
-    {
-       if(arr[i][0]==y || arr[i][1]==y)
+      }
+      for(int row = 0; row<totalPairs; row++)
+      {
+        if(matPairs[row][0] == y || matPairs[row][1] == y)
         {
-          c2 +=1;
+          c2++;
         }
         else
         {
-          freq2[arr[i][0]] +=1;
-          freq2[arr[i][1]] +=1;
+          freq2[matPairs[row][0]]++;
+          freq2[matPairs[row][1]]++;
         }
-    }
-    String isPair="NO";
-          for(int i=0;i<n+1;i++){
-              if(c1+freq1[i]==m||c2+freq2[i]==m){
-                    isPair="YES";
-                    break;
-              }
-          }
-          System.out.println(isPair);
+      }
+      String isPair = "NO";
+      for(int i = 0; i<freq1.length; i++)
+      {
+        if(c1+freq1[i] == totalPairs || c2+freq2[i] == totalPairs)
+        {
+          isPair = "YES";
+        }
+      }
+      System.out.println(isPair);
     }
   }
