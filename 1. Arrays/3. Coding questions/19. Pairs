@@ -1,0 +1,38 @@
+//prepbytes, codeforces
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+    Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[] qtiesX = new int[n + 1];
+		int[] qtiesY = new int[n + 1];
+		int withoutX = 0, withoutY = 0;
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		for (int i = 1; i < m; i++) {
+			int a = sc.nextInt();
+			int b = sc.nextInt();
+			if (a != x && b != x){
+				qtiesX[a]++;
+				qtiesX[b]++;
+				withoutX++;
+			}
+			if (a != y && b != y) {
+				qtiesY[a]++;
+				qtiesY[b]++;
+				withoutY++;
+			}
+		}
+		for (int i = 0; i < n + 1; i++) 
+			if (qtiesX[i] == withoutX || qtiesY[i] == withoutY) {
+				System.out.println("YES");
+				return;
+			}
+		System.out.println("NO");
+    }
+  }
