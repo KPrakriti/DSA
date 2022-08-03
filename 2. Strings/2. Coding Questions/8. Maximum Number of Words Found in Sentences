@@ -1,0 +1,22 @@
+class Solution {
+    public int mostWordsFound(String[] sentences) {
+        
+        int currCount;
+        int maxxCount=-1;
+        
+        for(int i=0; i<sentences.length; i++)
+        {
+            String sen=sentences[i];
+            currCount=0;
+            for(int j=0; j<sen.length(); j++)
+            {
+                if(sen.charAt(j) == ' ')
+                {
+                    currCount++;
+                }
+            }
+            maxxCount= Math.max(currCount,maxxCount);
+        }
+        return maxxCount+1; 
+    }
+}
