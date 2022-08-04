@@ -1,0 +1,45 @@
+/* Prepbytes
+Sorting numbers is something we are very much comfortable with. Let's get comfortable with sorting strings as well. The task is simple, given a 
+string S you have to sort the characters of the string in lexicographically-decreasing order.
+Note - Do not use inbuilt sorting function.
+*/
+
+APPROACH 1: using 2 extra arrays
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        String s = sc.next();
+        int slen = s.length();
+		int[] freq=new int[26];
+		char[] arr= new char[26];
+		int count=0;
+		
+		for(int i=0; i<slen; i++)
+		{
+			freq[s.charAt(i)-'a']++;
+			arr[s.charAt(i)-'a'] = s.charAt(i);
+		}
+
+		for(int i=freq.length-1; i>=0; i--)
+		{
+			if(freq[i] != 0)
+			{
+				count=freq[i];
+				while(count>0)
+				{
+					System.out.print(arr[i]);
+					count--;
+				}
+			}
+		}
+        System.out.println();
+      }
+    }
+  }
