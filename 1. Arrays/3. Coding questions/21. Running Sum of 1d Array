@@ -1,0 +1,14 @@
+//Leetcode
+
+class Solution {
+    public int[] runningSum(int[] nums) {
+        int n=nums.length;
+        int[] ans_arr=new int[n];
+        ans_arr[0]=nums[0];
+        for(int i=1; i<n; i++)
+        {
+            ans_arr[i]= ans_arr[i-1]+nums[i];
+        }
+        return ans_arr;
+    }
+}
