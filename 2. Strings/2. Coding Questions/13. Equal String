@@ -1,0 +1,45 @@
+//Gfg Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0)
+      {
+        int N=sc.nextInt();
+        String strs[]=new String[N];
+        for(int i=0; i<N; i++)
+        {
+          strs[i]=sc.next();
+        }
+        int ans=Integer.MAX_VALUE;
+        for(int i=0; i<N; i++)
+        {
+          int currCount=0;
+          String tmp="";
+          for(int j=0; j<N; j++)
+          {
+            tmp=strs[j]+strs[j];
+            int ind=tmp.indexOf(strs[i]);
+            
+            if(ind != -1)
+            {
+              currCount += ind;
+            }
+            else
+            {
+              currCount = -1;
+            }
+            
+          }
+          ans = Math.min(ans, currCount);
+        }
+        System.out.println(ans);
+      }
+      
+    }
+  }
