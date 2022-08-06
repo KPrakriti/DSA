@@ -15,6 +15,7 @@ import java.util.*;
         int strLen=str.length();
     		int[] ind=new int[strLen/4];
     		int count;
+    		int flag=0;
     		int j=0;
     		for(int i=0; i<strLen-3; i++)
     		{
@@ -23,10 +24,12 @@ import java.util.*;
     			{
     				for(; j<ind.length && count<1; j++,count++)
     				{
+    				  flag=1;
     					ind[j]=i;
     				}
     			}
     		}
+    		
     		int dynamicLen= strLen;
     		int ans=0;
     		int k=0;
@@ -43,7 +46,12 @@ import java.util.*;
     				}	
     			}
     		}
-    		System.out.println(ans);
+    		if(flag==1){
+    		  System.out.println(ans);
+    		}
+    		else{
+    		  System.out.println(0);
+    		}
       }
       
     }
