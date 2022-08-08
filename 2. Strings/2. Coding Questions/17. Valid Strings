@@ -1,0 +1,48 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+    Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			String str=sc.next();
+			int N=str.length();
+			String isValid="No";
+			int count=0,count1=0;
+			if(N%2 != 0)
+			{
+				isValid="No";
+			}
+			else
+			{
+			  for(int i=0; i<N; i++)
+			  {
+				if(str.charAt(i)=='(')
+					count++;
+				else if(str.charAt(i)==')')
+					count--;
+					
+					if(count1<count)
+					count1=count1;
+					else
+					count1=count;
+			  }
+			  
+			  if(count1<-1||count>0)
+			   {
+				 isValid="No";
+			   }
+			 else
+  			{
+  				isValid="Yes";
+  			}
+			}
+			System.out.println(isValid);
+		}
+    }
+  }
