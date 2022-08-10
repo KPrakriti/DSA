@@ -1,0 +1,49 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int testcases=sc.nextInt();
+      while(testcases-->0)
+      {
+        String s=sc.next();
+        String t=sc.next();
+        
+        String flag="NO";
+    		int TMinusCount=0,SMinusCount=0,TPlusCount=0,SPlusCount=0;
+    		
+    		//count plus and minus characters in s
+    		for(int i=0; i<t.length(); i++)
+    		{
+    			if(t.charAt(i)=='-')
+    				TMinusCount++;
+    			else if(t.charAt(i)=='+')
+    				TPlusCount++;
+    		}
+    		//count plus and minus characters in s
+    		for(int i=0; i<s.length(); i++)
+    		{
+    			if(s.charAt(i)=='-')
+    				SMinusCount++;
+    			else if(s.charAt(i)=='+')
+    				SPlusCount++;
+    		}
+    		int i=TPlusCount,j=TMinusCount;
+    		while(i>=0)
+    		{
+    			if(SPlusCount==i && SMinusCount==j)
+    			{
+    				flag="YES";
+    				break;
+    			}
+    			i--;
+    			j += 2;
+    		}
+    		System.out.println(flag);
+      }
+    }
+  }
