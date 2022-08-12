@@ -6,44 +6,53 @@ import java.util.*;
   public class Main {
     public static void main(String args[]) throws IOException {
       
-      Scanner sc = new Scanner(System.in);
-      int testcases=sc.nextInt();
-      while(testcases-->0)
+      Scanner scn= new Scanner(System.in);
+      int T=scn.nextInt();
+      while(T-->0)
       {
-        String s=sc.next();
-        String t=sc.next();
-        
-        String flag="NO";
-    		int TMinusCount=0,SMinusCount=0,TPlusCount=0,SPlusCount=0;
-    		
-    		//count plus and minus characters in s
-    		for(int i=0; i<t.length(); i++)
-    		{
-    			if(t.charAt(i)=='-')
-    				TMinusCount++;
-    			else if(t.charAt(i)=='+')
-    				TPlusCount++;
-    		}
-    		//count plus and minus characters in s
-    		for(int i=0; i<s.length(); i++)
-    		{
-    			if(s.charAt(i)=='-')
-    				SMinusCount++;
-    			else if(s.charAt(i)=='+')
-    				SPlusCount++;
-    		}
-    		int i=TPlusCount,j=TMinusCount;
-    		while(i>=0)
-    		{
-    			if(SPlusCount==i && SMinusCount==j)
-    			{
-    				flag="YES";
-    				break;
-    			}
-    			i--;
-    			j += 2;
-    		}
-    		System.out.println(flag);
+        String s=scn.next();
+        String t=scn.next();
+        int s1=s.length();
+        int t1=t.length();
+        boolean val=Help(s,t,s1,t1);
+        if(val==true)
+        {
+          System.out.println("YES");
+        }
+        else
+        {
+          System.out.println("NO");
+        }
       }
     }
-  }
+    public static Boolean Help(String s1,String s2,int len1,int len2){
+    int i=0;
+	  int j=0;
+	    while(i<len1&& j<len2)
+	    {
+	        if(s1.charAt(i) == s2.charAt(j))
+	        {
+            j++;
+            i++;
+          }
+          else if(s1.charAt(i) == s1.charAt(i+1) && s1.charAt(i) =='-' && s2.charAt(j) =='+')
+          {
+            i+=2;
+            j++;
+          }
+          else
+          {
+            break;
+          }
+        }
+        if(i==len1&& j==len2){
+          //System.out.println("YES");
+          return true;
+        }
+        else
+        {
+          //System.out.println("NO");
+          return false;
+        }
+    }
+    }
