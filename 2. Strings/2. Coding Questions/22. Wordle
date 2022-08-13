@@ -1,0 +1,38 @@
+//Codechef - https://www.codechef.com/submit/WORDLE
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+		    String hidden_word=sc.next();
+		    String guess_word=sc.next();
+		    int len=hidden_word.length();
+		    String M="";
+		    for(int i=0; i<len; i++)
+		    {
+		        if(hidden_word.charAt(i)==guess_word.charAt(i))
+		        {
+		            M += "G";
+		        }
+		        else if(hidden_word.charAt(i)!=guess_word.charAt(i))
+		        {
+		            M += "B";
+		        }
+		    }
+		    System.out.println(M);
+		}
+	}
+}
+
+
