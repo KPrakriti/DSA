@@ -1,0 +1,55 @@
+//codechef - https://www.codechef.com/submit/PALL01
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc= new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+		    int n1=sc.nextInt();
+		    if(isPalindrome(n1)==true)
+		    {
+		        System.out.println("wins");
+		    }
+		    else
+		    {
+		        System.out.println("loses");
+		    }
+		}
+	}
+	private static boolean isPalindrome(int num)
+	{
+	        int copy_n1=num;
+		    int n2=0;
+		    int count=0;
+		    while(copy_n1>0)
+		    {
+		        count++;
+		        copy_n1=copy_n1/10;
+		    }
+		    copy_n1=num;
+		    while(copy_n1>0)
+		    {
+		        n2 += copy_n1%10*((int)Math.pow(10,count-1));
+		        count--;
+		        copy_n1=copy_n1/10;
+		    }
+		    if(num==n2)
+		    {
+		        return true;
+		    }
+		    else
+		    {
+		        return false;
+		    }
+	}
+}
