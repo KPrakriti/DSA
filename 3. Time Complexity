@@ -1,0 +1,26 @@
+
+1. What is an Algorithm?
+Step by step method of solving a problem
+A sequence of finite steps to solve a problem
+Independent of a programming language
+
+2. Time and Space Complexity Overview
+We decide which algorithm is best by analysing their time and space complexity.
+Time Complexity - Time taken by an algorithm to execute a program.
+Space Complexity - Extra space required by an algorithm
+
+Constant TC- when the execution of a program does not depend on the input.
+
+3. Asymptotic Notations
+There are 3 asymptotic notations - big O, theta and omega
+
+Lets discuss each of them
+Big Oh Notation- It indicates the maximum time required by an algorithm for all input. (WC)
+Big Omega - It indicates the Minimum time taken by an algorithm. (BC)
+Big Theta - It indicates the average time taken by ana algorithm 
+
+4. Time Complexity - Iteration
+In this case we calculate the Time complexity by calculating the number of operations or the number of times the loops will run
+
+5. Time Complexity - Recursive
+In this case we cannot calculate the number of operations. Thus we need to find the recurrence relation to get the Time Complexity.
