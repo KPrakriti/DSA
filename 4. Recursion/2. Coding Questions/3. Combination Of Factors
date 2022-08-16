@@ -1,0 +1,30 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class factorsCombination { 
+	public static void main(String[] args)
+  { 
+		
+		int n=12;
+		int p=2;
+		String str="1 ";
+		solve(n,p,str);
+	}
+	private static void solve(int n, int p, String str)
+	{
+		if(n==1)
+			System.out.println(str);
+		else
+		{
+			for(int i=p; i<=n; i++)
+			{
+				if(n%i==0)
+				{
+					solve(n/i,i,str+i+" ");
+				}
+			}
+		}
+		
+	}
+}
