@@ -1,0 +1,28 @@
+//Pepcoding
+
+import java.io.*;
+import java.util.*;
+
+
+public class Main {
+    static int i=1;
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        printIncreasing(n);
+        
+    }
+    public static void printIncreasing(int n){
+        
+        if(n<=0)
+        {
+            return;
+        }
+        System.out.println(i);
+        i++;
+        printIncreasing(n-1);
+        
+    }
+
+}
