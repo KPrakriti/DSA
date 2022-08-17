@@ -1,0 +1,20 @@
+// Leetcode - https://leetcode.com/problems/number-of-good-pairs/
+
+APPROACH 1: Brute: O(N^2)
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int n=nums.length;
+        int total_pairs=0;
+        for(int i=0; i<n-1; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                if(nums[i]==nums[j])
+                {
+                    total_pairs++;
+                }
+            }
+        }
+        return total_pairs;
+    }
+}
