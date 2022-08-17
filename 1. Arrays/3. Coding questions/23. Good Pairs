@@ -18,3 +18,21 @@ class Solution {
         return total_pairs;
     }
 }
+
+APPROACH 2: Using frequency array: TC O(N) 
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int n=nums.length;
+        int total_pairs=0;
+        int[] freq=new int[100];
+        for(int i=0; i<n; i++)
+        {
+            if(freq[nums[i]]!=0)
+            {  
+                total_pairs+=freq[nums[i]];
+            }
+            freq[nums[i]]++;
+        }
+        return total_pairs;
+    }
+}
