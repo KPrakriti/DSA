@@ -1,0 +1,29 @@
+//Pepcoding
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        pd(n);
+        pi(n);
+    }
+
+    public static void pd(int n){
+        if(n==0) return;
+        System.out.println(n);
+        pd(n-1);
+    }
+    static int i=1;
+    public static void pi(int n){
+        if(n==0) return;
+        System.out.println(i);
+        i++;
+        pi(n-1);
+    }
+
+}
