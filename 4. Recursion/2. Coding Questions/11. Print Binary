@@ -1,4 +1,9 @@
 //Prepbytes
+/*
+Arnab is given a number N. 
+You have to print all the binary numbers of length N with no consecutive 1 in lexicographical order.
+*/
+
 
 import java.util.*;
 import java.lang.*;
