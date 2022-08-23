@@ -1,0 +1,28 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      long T=sc.nextLong();
+      while(T-->0)
+      {
+        long N=sc.nextLong();
+        sumDigits(N,0);
+        System.out.println();
+      }
+      
+    }
+    private static void sumDigits(long N, long sum)
+    {
+      if(N==0)
+      {
+        System.out.print(sum);
+        return;
+      }
+      sumDigits(N/10, sum+N%10);
+    }
+  }
