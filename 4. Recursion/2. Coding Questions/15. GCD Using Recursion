@@ -1,0 +1,29 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      long T=sc.nextLong();
+      while(T-->0)
+      {
+        long N=sc.nextLong();
+        long P=sc.nextLong();
+        gcd(N,P);
+        System.out.println();
+      }
+    }
+    private static void gcd(long N,long P)
+    {
+      if(P==0)
+      {
+        System.out.print(N);
+        return;
+      }
+      gcd(P,N%P);
+      
+    }
+  }
