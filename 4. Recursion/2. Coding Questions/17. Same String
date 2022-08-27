@@ -1,0 +1,42 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      while(T-->0)
+      {
+        String s=sc.next();
+        if(isPallindrome(s,0,s.length()-1))
+        {
+          System.out.print("Yes");
+        }
+        else
+        {
+          System.out.print("No");
+        }
+        System.out.println();
+      }
+    }
+    private static boolean isPallindrome(String s, int start, int end)
+    {
+      int n=s.length();
+      char ch[]=s.toCharArray();
+      while(start<=end)
+      {
+        if(ch[start]==ch[end])
+        {
+          isPallindrome(s,++start,--end);
+        }
+        else
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
