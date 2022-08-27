@@ -1,0 +1,65 @@
+//Leetcode
+
+To solve this question optimally we don't really need to find all the permutations.
+we know if N is 4 then the total permutations will be 4! = 24 
+These will start from 
+1  with permutation combinations of (2,3,4)  - when (2,3,4) will permute among themselves they will generate 3! permutations i.e 6 (ind 0 to ind 5)
+2  with permutation combinations of (1,3,4)  - when (1,3,4) will permute among themselves they will generate 3! permutations i.e 6 (ind 6 to ind 11)
+3  with permutation combinations of (1,2,4)  - when (1,2,4) will permute among themselves they will generate 3! permutations i.e 6 (ind 12 to ind 17)
+4  with permutation combinations of (1,2,3)  - when (1,2,3) will permute among themselves they will generate 3! permutations i.e 6 (ind 18 to ind 23)
+
+k = 17 but since we follow 0 based indexing thus we will consider k=(17-1) = 16
+so this will be found in between index 12 to 17 whose first digit is 3 (our answer sequence will start with 3)
+this 3 is nothing but a number between 1 to n which is at index 2 in numberList [1,2,3,4] so we are picking nothing but k/factorial i.e 16/6
+once we added 3 in ans, we remove 3 from our numberList 
+Thus updated numberList is [1,2,4] - from these the permutations can start with 
+1  with permutation combinations of (2,4)  - when (2,4) will permute among themselves they will generate 2! permutations i.e 2 (ind 0 to ind 1)
+2  with permutation combinations of (1,4)  - when (1,4) will permute among themselves they will generate 2! permutations i.e 2 (ind 2 to ind 3)
+4  with permutation combinations of (1,2)  - when (1,2) will permute among themselves they will generate 2! permutations i.e 2 (ind 4 to ind 5)
+
+k will also be modified now by k%fact i.e 16%6 = 4 
+so this will be found between ind 4 to ind 5 whose first digit is 4 (our answer 2nd place will consist 4)
+again this 4 is nothing but a number between 1 to n which is at index 2 in the numberList [1,2,4] so we are placeing nothing but k/factorial i.e 4/2
+once we added 4 in our ans, we remove 4 from our numberList
+Thus updated numberList is [1,2] - from these the permutations can start with 
+1  with permutation combinations of (2)  - when (2) will permuteit will provide 1! permutations i.e 1 (ind 0)
+2  with permutation combinations of (1)  - when (1) will permuteit will provide 1! permutations i.e 1 (ind 1)
+
+k will also be modified now by k%fact i.e 4%2 = 0
+so this will be found between ind 0 whose first digit is 1 (our answer 3rd place will consist 1)
+again 1 is a number between 1 to n which is at index 0 in the numberList [1,2] so we are placing nothing but k/factorial i.e 0/1
+once we added 1 in our ans, we remove 1 from numberList
+Thus updated numberList is [2] - now there can be only 1 permutation i.e 2
+
+ans = ans+""+numberList.get(k/fact) - k=0,fact=1/0 
+thus, our answer 4th place will consist 2
+
+TC: O(N) 
+SC: O(N)
+
+CODE:
+class Solution {
+    public String getPermutation(int n, int k) {
+        int fact=1;
+        String ans="";
+        List<Integer> numberList=new ArrayList<>();
+        for(int i=1; i<n; i++)
+        {
+            fact=fact*i;
+            numberList.add(i);
+        }
+        numberList.add(n);
+        k=k-1; //0 based indexing
+        while(true)
+        {
+            ans =ans+""+numberList.get(k/fact);
+            numberList.remove(k/fact);
+            if(numberList.size()==0)
+                break;
+            k=k%fact;
+            fact=fact/numberList.size();
+        }
+        return ans;
+    }
+}
+
