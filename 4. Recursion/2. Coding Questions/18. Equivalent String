@@ -1,0 +1,62 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      String a=sc.next();
+      String b=sc.next();
+      int n=a.length();
+      if(isEquivalent(a,b))
+      {
+        System.out.print("YES");
+      }
+      else
+      {
+        System.out.print("NO");
+      }
+    }
+    private static boolean isEquivalent(String a,String b)
+    {
+      boolean fl=true;
+      if(a==b)
+      {
+        return true;
+      }
+      if(a.length()==1)
+      {
+        return false;
+      }
+      if(a.length()%2 !=0)
+      {
+        if(a==b)
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+      }
+      int len=a.length();
+      int mid=len/2;
+      String a1=a.substring(0,mid);
+      String a2=a.substring(mid,len);
+      String b1=b.substring(0,mid);
+      String b2=b.substring(mid,len);
+      
+      if((a1.equals(b1) && a2.equals(b2)) || (a1.equals(b2) && a2.equals(b1)))
+      {
+        return true;
+      }
+      boolean flag1=isEquivalent(a1,b1);
+      boolean flag2=isEquivalent(a2,b2);
+      boolean flag3=isEquivalent(a1,b2);
+      boolean flag4=isEquivalent(a2,b1);
+      
+      return (flag1 && flag2)||(flag3 && flag4);
+    }
+  }
