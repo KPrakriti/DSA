@@ -1,0 +1,49 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      while(T-->0)
+      {
+       int N=sc.nextInt();
+       int countZeros=0;
+       int countOnes=0;
+       while(N>0)
+       {
+         if(N%2==0) countZeros++;
+         else countOnes++;
+         N=N>>1;
+       }
+       String binary="";
+       permutation(countOnes,countZeros,binary);
+       System.out.println();
+      }
+    }
+    private static void permutation(int countOnes, int countZeros, String binary){
+      if(countZeros==0){
+        for(int i=0; i<countOnes; i++)
+        {
+          binary+="1";
+        }
+        System.out.print(binary+" ");
+        return;
+      }
+      else if(countOnes==0){
+        for(int j=0; j<countZeros; j++)
+        {
+          binary+="0";
+        }
+        System.out.print(binary+" ");
+        return;
+      }
+      //call permuation for filling 0
+      permutation(countOnes, countZeros-1, binary+"0");
+      //call permuation for filling 1
+      permutation(countOnes-1, countZeros, binary+"1");
+    }
+  }
