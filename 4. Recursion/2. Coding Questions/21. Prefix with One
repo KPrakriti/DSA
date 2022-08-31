@@ -1,0 +1,32 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      while(T-->0)
+      {
+        int N=sc.nextInt();
+        String str="";
+        solve(N,str,0,0,0);
+        System.out.println();
+      }
+    }
+    private static void solve(int N, String str,int ind, int no_ones, int no_zeros)
+    {
+      if(ind==N)
+      {
+        System.out.print(str+" ");
+        return;
+      }
+      solve(N,str+"1",ind+1,no_ones+1,no_zeros);
+      if(no_zeros<no_ones)
+      {
+        solve(N,str+"0",ind+1,no_ones,no_zeros+1);
+      }
+    }
+  }
