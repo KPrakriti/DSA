@@ -1,0 +1,42 @@
+//Leetcode - https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/
+
+/*Algorithm - 
+1. Traverse in the given 2D Array
+2. Strore the MIN from each array
+3. Trvaerse the MIN list and get the MAX
+4. Count the occurences of MAX
+5. return count as result
+*/
+class Solution {
+    public int countGoodRectangles(int[][] rectangles) {
+        int n=rectangles.length;
+        ArrayList<Integer> sqList=new ArrayList<>();
+        for(int[] r:rectangles)
+        {
+            int min=Integer.MAX_VALUE;
+            min=Math.min(r[0],r[1]);
+            sqList.add(min);
+        }
+        int largest=getLarget(sqList);
+        int ans=getAns(sqList,largest);
+        
+        return ans;
+    }
+    private int getLarget(ArrayList<Integer> sqList){
+        int maxx=Integer.MIN_VALUE;
+        for(int i=0; i<sqList.size(); i++){
+            maxx=Math.max(maxx,sqList.get(i));
+        }
+        return maxx;
+    }
+    private int getAns(ArrayList<Integer> sqList, int largest){
+        int res=0;
+        for(int i=0; i<sqList.size(); i++){
+            if(sqList.get(i)==largest)
+            {
+                res++;
+            }
+        }
+        return res;
+    }
+}
