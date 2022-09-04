@@ -1,0 +1,27 @@
+//Leetcode - https://leetcode.com/problems/find-subarrays-with-equal-sum/
+
+class Solution {
+    public boolean findSubarrays(int[] nums) {
+        int n=nums.length;
+        int sum=0;
+        //keeping a boolean variable to store true or false
+        boolean isEqual=false;
+        //creating a HashSet to store the sum. 
+        //if any subarray of size 2 gave the sum that the HashSet already has 
+        //then we turn the boolean isEqual = true
+        HashSet<Integer> sub_arr_sum=new HashSet<>();
+        for(int i=0; i<n-1; i++)
+        {
+            sum=nums[i]+nums[i+1];
+            if(!sub_arr_sum.contains(sum))
+            {
+                sub_arr_sum.add(sum);
+            }
+            else
+            {
+                isEqual=true;
+            }
+        }
+        return isEqual;
+    }
+}
