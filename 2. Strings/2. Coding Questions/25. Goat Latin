@@ -1,0 +1,56 @@
+//Leetcode - https://leetcode.com/problems/goat-latin/
+
+class Solution {
+    public String toGoatLatin(String sentence) {
+        StringBuilder ans=new StringBuilder();
+        int n=sentence.length();
+        int words=1;
+        for(int i=0; i<n; i++)
+        {
+            if(sentence.charAt(i)==' ')
+            {
+                words++;
+            }
+        }
+        String[] arr=sentence.split(" ",n);
+        
+        for(int i=0; i<words; i++)
+        {
+            if(vowel(arr[i].charAt(0)))
+			{
+				ans.append(arr[i]);
+				ans.append("ma");
+				for(int j=0; j<i+1; ++j)
+				{
+					ans.append("a");
+				}
+				if(i !=words-1)
+                {
+                    ans.append(" ");
+                }
+			}
+            else
+            {
+                ans.append(arr[i].substring(1));
+				ans.append(arr[i].charAt(0));
+				ans.append("ma");
+				for(int j=0; j<i+1; ++j)
+				{
+					ans.append("a");
+				}
+                if(i !=words-1)
+                {
+                    ans.append(" ");
+                }
+            }
+        }
+        return ans.toString();
+    }
+    private static boolean vowel(char ch)
+    {
+        if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
+            return true;
+        else
+            return false;
+    }
+}
