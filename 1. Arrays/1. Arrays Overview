@@ -7,7 +7,7 @@ Q.Store marks of 100 students in a class and check who got highest
 	student marks and then compare it would lead to lots of
 	Complications.
 
-Q. What is an ARRAY?
+Q. What is an ARRAY ?
     An array is a data structure which stores collection of values of
     The same data type stored in contiguous memory location.
 
