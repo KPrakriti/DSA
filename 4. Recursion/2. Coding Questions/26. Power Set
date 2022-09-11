@@ -1,0 +1,31 @@
+//Prepbytes
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc=new Scanner(System.in);
+      String str=sc.next();
+      char[] tempArr=str.toCharArray();
+      Arrays.sort(tempArr);
+      String sortedStr=new String(tempArr);
+      powerSet(sortedStr,str.length(),-1,"");
+      
+    }
+    static void powerSet(String str, int n, int start, String res){
+      if(start==n){
+        return;
+      }
+      System.out.println(res);
+      
+      for(int i=start+1; i<n; i++)
+      {
+        res+=str.charAt(i);
+        powerSet(str,n,i,res);
+        res =res.substring(0,res.length()-1);
+      }
+      return;
+    }
+  }
