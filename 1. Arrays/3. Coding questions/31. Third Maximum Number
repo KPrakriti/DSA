@@ -1,0 +1,56 @@
+//Leetcode - https://leetcode.com/problems/third-maximum-number/
+
+class Solution {
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        int n=nums.length;
+        Integer max1=nums[n-1];
+        Integer max2=null;
+        Integer max3=null;
+        boolean containsZero=false;
+        if(n<3)
+        {
+            return nums[n-1];
+        }
+        
+        if(n==3)
+        {
+            if(nums[0] != nums[1] && nums[0] != nums[2] && nums[1] != nums[2])
+            {
+                return nums[0];
+            }
+            else
+            {
+                return nums[2];
+            }
+        }
+        
+        for(int i=n-2; i>=0; i--)
+        {
+            if(nums[i] != max1 && max2==null)
+            {
+                max2=nums[i];
+            }
+            else if(nums[i] == max1 || nums[i]==max2)
+            {
+                continue;
+            }
+            else if(max1 !=null && max2 !=null && max3==null)
+            {
+                if(nums[i] !=max2)
+                {
+                    max3=nums[i]; 
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+        if(max3==null)
+        {
+            max3=max1;
+        }
+        return max3;
+    }
+}
