@@ -54,3 +54,25 @@ class Solution {
         return max3;
     }
 }
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+APPROACH 2: Use TreeSet Data Structure
+class Solution {
+    public int thirdMax(int[] nums) {
+        
+        TreeSet<Integer> treeSet=new TreeSet<>();
+        int n=nums.length;
+        for(int i=0; i<n; i++)
+        {
+            treeSet.add(nums[i]); //O(NlogN)
+        }
+        int distinctLength=treeSet.size();
+        Integer arr[]=new Integer[distinctLength];
+        arr=treeSet.toArray(arr);
+        if(distinctLength<3)
+        {
+            return arr[distinctLength-1];
+        }
+       return arr[distinctLength-3];
+    }
+}
