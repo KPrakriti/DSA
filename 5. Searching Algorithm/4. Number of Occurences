@@ -2,7 +2,6 @@
 /*
 You are given an unsorted array of characters A
 and a character x. You have to find the number of times x occurs in character array A
-.
 */
 
 //UNSORTED LINEAR SEARCH TECHNIQUE
