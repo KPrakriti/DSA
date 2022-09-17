@@ -1,7 +1,7 @@
 //Leetcode
 
 APPROACH 1: LINEAR SEARCH 
-TC: O(X)
+TC: O(√x)
 class Solution {
     public int mySqrt(int x) {
         long y=0;
