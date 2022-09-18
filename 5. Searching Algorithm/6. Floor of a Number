@@ -1,0 +1,50 @@
+//PREPBYTES - https://www.prepbytes.com/panel/mycourses/program-one/dsalgo/week/5/searching/codingAssignment/FLOOR
+/*
+We all have learnt about floor of a number in school. Let us try and frame a problem statement around that. So, you are given a number X and a sorted array A
+containing N distinct integers. Your task is to find floor of x in the array 
+A(0-based indexing). Now you might be wondering what will be floor of x in A? Let me tell you, the floor of x will largest element in A that is smaller than or equal to x
+*/
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      //write your code here
+      Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      while(T-->0)
+      {
+        int N=sc.nextInt();
+        int X=sc.nextInt();
+        int[] arr=new int[N];
+        for(int i=0; i<N; i++)
+        {
+          arr[i]=sc.nextInt();
+        }
+        int index=findFloor(arr,X,0,N-1);
+        System.out.println(index);
+      }
+    }
+    static int findFloor(int[] arr, int x, int low, int high){
+      int res = -1;
+        while (low<=high)
+        {
+            int mid = low + (high - low)/2;
+            
+            if(arr[mid] == x){
+                res = mid;
+                break;
+            }
+            if(arr[mid] > x){
+                high = mid-1;
+            }
+            else if(arr[mid] < x){
+                res = mid;
+                low = mid+1;
+            }
+        }
+        return res;
+    }
+  }
