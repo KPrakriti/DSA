@@ -1,0 +1,37 @@
+LC - https://leetcode.com/problems/kth-missing-positive-number/
+
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        
+        int ans=0;
+        int n=arr.length;
+        if(n==2 && k==1) return k;
+        if(n==arr[n-1])
+        {
+            ans = arr[n-1]+k;
+        }
+        //else in all cases we have to apply BINARY SEARCH
+        int low=0, high=n-1;
+        int missing = computeMissingNumbers(arr[n-1],n);
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            missing = computeMissingNumbers(arr[mid],mid+1);
+            
+            if(missing >= k)
+            {
+                high=mid-1;
+                
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return arr[high]+k-computeMissingNumbers(arr[high],high+1);
+    }
+    int computeMissingNumbers(int actualEnd, int expectedEnd)
+    {
+        return actualEnd-expectedEnd;
+    }
+}
