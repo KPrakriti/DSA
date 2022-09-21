@@ -1,0 +1,50 @@
+//PREPBYTES - https://www.prepbytes.com/panel/mycourses/program-one/dsalgo/week/5/searching/codingAssignment/PEAKELE
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int T = sc.nextInt();
+      
+      while(T-->0)
+      {
+        int len = sc.nextInt();
+        int[] house = new int[len];
+        for(int i=0; i<len; i++)
+        {
+          house[i] = sc.nextInt();
+        }
+        int position = getTallest(house, len);
+        System.out.println(position);
+      }
+    }
+    static int getTallest(int[] arr, int arrLength){
+      int tallest=-1;
+      
+      for(int i=0; i<arrLength; i++)
+      {
+        if(i == 0 && arr[i] > arr[i+1])
+        {
+          tallest = i;
+          break;
+        }
+        else if(i == arrLength-1 && arr[i] > arr[i-1])
+        {
+          tallest = i;
+          break;
+        }
+        else if(i>0 && i<arrLength)
+        {
+          if(arr[i] > arr[i-1] && arr[i] > arr[i+1])
+          {
+            tallest = i;
+            break;
+          }
+        }
+      }
+      return tallest;
+    }
+  }
