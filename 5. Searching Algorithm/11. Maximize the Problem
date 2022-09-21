@@ -1,0 +1,34 @@
+//PREPBYTES - https://www.prepbytes.com/panel/mycourses/program-one/dsalgo/week/5/searching/codingAssignment/MAXPROBS
+
+import java.util.*;
+  import java.io.*;
+  
+  public class Main {
+    public static void main(String args[]) throws IOException {
+      
+      Scanner sc = new Scanner(System.in);
+      int n = sc.nextInt();
+      int k = sc.nextInt();
+      
+      int timeTaken = 240-k;
+      
+      int low = 1, high = n;
+      int ans=0;
+      while(low <= high)
+      {
+        int mid = low + (high - low)/2;
+        int sum = mid * (mid+1)/2;
+        
+        if(sum*5 <= timeTaken)
+        {
+          ans = mid;
+          low = mid + 1;
+        }
+        else
+        {
+          high = mid - 1;
+        }
+      }
+      System.out.println(ans);
+    }
+  }
