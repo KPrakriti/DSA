@@ -15,8 +15,6 @@ public class testPractice {
 			}
 			int key=sc.nextInt();
 			
-			int search=binarySearch(arr,0,N-1,key);
-			int pivot=findPivot(arr,0,N-1);
 			int keyIndex=findKey(arr,N,key);
 			System.out.println(keyIndex);
 		}
