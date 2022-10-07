@@ -11,14 +11,14 @@ class Solution {
         while(low<=high)
         {
             int mid = low + (high - low)/2;
-            if(mid > 0 && nums[mid] < nums[mid-1])
+            if(mid > 0 && nums[mid] < nums[mid-1]) //this is the breaking point, thus nums[mid] has to be the MIN elemnet
             {
                 return nums[mid];
             }
             
             if(nums[low] <= nums[mid] && nums[mid] > nums[high])
             {
-                low = mid+1;
+                low = mid+1; //we're trying to take low to the min elemnet
             }
             else
             {
