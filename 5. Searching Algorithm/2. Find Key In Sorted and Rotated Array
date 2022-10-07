@@ -50,8 +50,8 @@ public class testPractice {
 		if(arr[pivot]==key)
 			return pivot;
 		if(arr[0]<key)
-			return binarySearch(arr,0,pivot-1,key);
-		return binarySearch(arr,pivot+1,n-1,key);
+			return binarySearch(arr,0,pivot-1,key); //search in 1st half
+		return binarySearch(arr,pivot+1,n-1,key); //search in 2nd half
 		
 	}
 }
