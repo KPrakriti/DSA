@@ -1,0 +1,28 @@
+LC - https://leetcode.com/problems/find-pivot-index/
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int size = nums.length;
+        int leftSum = 0;
+        int rightSum = 0;
+        
+        //fill the rightArr with total sum
+        for(int i=0; i<size; i++)
+        {
+            rightSum += nums[i];
+        }
+        
+        for(int i=0; i<size; i++)
+        {
+            rightSum -= nums[i];
+            if(rightSum == leftSum)
+            {
+                return i;
+            }
+            
+            leftSum += nums[i];
+        }
+        
+        return -1;
+    }
+}
