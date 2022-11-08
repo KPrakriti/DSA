@@ -1,0 +1,25 @@
+public class testPractice {
+
+	public static void main(String[] args) {
+	
+	int[] arr = {3,8,10,17,1};
+	System.out.println(getPivot(arr,5));
+	}
+	static int getPivot(int[] arr, int size) {
+		int start = 0;
+		int end = size-1;
+		while(start<end)
+		{
+			int mid = start+(end-start)/2;
+			if(arr[mid] >= arr[start])
+			{
+				start = mid+1;
+			}
+			else
+			{
+				end = mid;
+			}
+		}
+		return start;
+	}
+}
