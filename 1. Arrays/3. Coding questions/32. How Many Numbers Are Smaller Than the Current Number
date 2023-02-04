@@ -1,0 +1,38 @@
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        
+        int size = nums.length;
+        int [] output1 = new int[size];
+        for(int i = 0; i<size; i++)
+        {
+            output1[i] = 0;
+        }
+        int[] copyOfNums = Arrays.copyOf(nums,size);
+        Arrays.sort(copyOfNums);
+        for(int i = 0; i<size; i++)
+        {
+            for(int j = 0; j<size-1; j++)
+            {
+                //[1 2 2 3 8] - copyOfNums
+                //[] - output1 
+                if(copyOfNums[j] < copyOfNums[i])
+                {
+                    output1[i]++;
+                }
+
+            }
+        }
+        int[] finalOutput = new int[size];
+        for(int i = 0; i<size; i++)
+        {
+            for(int j = 0; j<size; j++)
+            {
+                if(nums[i] == copyOfNums[j])
+                {
+                    finalOutput[i] = output1[j];
+                }
+            }
+        }
+        return finalOutput;
+    }
+}
