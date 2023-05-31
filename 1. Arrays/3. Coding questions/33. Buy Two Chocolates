@@ -1,0 +1,32 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        /* 
+        1. Find the minimum sum of two values from the given array
+        2. check if the minimum sum is lesser than or equal to the given money
+            2.1 if yes, then return money-minimumSum
+
+            else return money
+
+            TC - [1,2,1]
+        */
+        int currentMinSum = Integer.MAX_VALUE;
+        int finalMinSum = currentMinSum;
+        int length = prices.length;
+
+        Arrays.sort(prices);
+
+        for(int i=0 ; i<length-1; i++)
+        {
+            currentMinSum = Math.min(currentMinSum, prices[i] + prices[i+1]); //3
+            finalMinSum = Math.min(currentMinSum, finalMinSum); //3
+        }
+
+        if(finalMinSum <= money)
+        {
+            return money-finalMinSum;
+        }
+        return money;
+    }
+}
+
+TC - O(NlogN) + O(N)
