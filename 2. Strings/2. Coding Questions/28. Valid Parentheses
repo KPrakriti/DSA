@@ -1,0 +1,44 @@
+class Solution {
+    public boolean isValid(String s) {
+        
+        /*
+        1. if the length of the input string is ODD then return False
+
+        2. Use a stack data Structure to solve this problem 
+            2.1 whenever we encounter an openining bracket - we push that into the stack
+            2.2 whenever we encounter an closing bracket we pop out from the stack
+
+            2.3 If in the end stack is empty then return True, otherwise return false
+         */
+
+         int length = s.length();
+         if(length%2 != 0) return false;
+
+        Stack<Character> st = new Stack<>();
+        for(char c: s.toCharArray())// toCharArray is a method that converts a String to an Array
+        {
+            if(c == '(' || c == '[' || c == '{') //"([}}])" instack = ([
+            {
+                st.push(c);
+            }
+            else if(c == ')' && !st.isEmpty() && st.peek() == '(')
+            {
+                st.pop();
+            }
+            else if(c == ']' && !st.isEmpty() && st.peek() == '[')
+            {
+                st.pop();
+            }
+            else if(c == '}' && !st.isEmpty() && st.peek() == '{')
+            {
+                st.pop();
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return st.isEmpty();
+
+    }
+}
