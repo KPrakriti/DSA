@@ -1,0 +1,62 @@
+Input: s = "the sky is blue"
+Output: "blue is sky the"
+
+APPROACH 1 : USING STACK - TC - O(2N) , SC - O(N) 
+
+class Solution {
+    public String reverseWords(String s) {
+        /*using Stack
+          we know that Stack follows LIFO rule i.e last in first out
+          since we need to reverse the given string
+          we can use stack
+
+          string s = "The sky is blue"
+
+          the - goes firt 
+          sky - goes second
+          is - goes third
+          blue goes last
+
+          while popping up - 'blue' will be popped first, then 'is', then 'sky', then 'the'
+
+          string output = blue is sky the
+        */
+        s = s.trim();
+
+        Stack<String> stc = new Stack<>();
+        
+        String temp = "";
+
+        for(int i = 0; i<s.length(); )
+        {
+
+            if(i>0 && s.charAt(i) == ' ' && s.charAt(i-1) != ' ')
+            {
+                stc.push(temp);
+
+                temp = "";
+                i++;
+                
+            }
+            else if(i> 0 && s.charAt(i) == ' ' && s.charAt(i-1) == ' ')
+            {
+                i++;
+            }
+            else
+            {
+                temp += s.charAt(i);
+                i++;
+            }
+        }
+        
+        stc.push(temp);
+        String ans = "";
+        while(stc.size() != 1)
+        {
+            ans += stc.peek() + " ";
+            stc.pop();
+        }
+        ans += stc.peek();
+        return ans;
+    }
+}
