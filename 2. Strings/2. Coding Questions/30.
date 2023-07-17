@@ -1,0 +1,41 @@
+//TC - O(NlogN) SC - words[i].length
+
+class Solution {
+    public List<String> removeAnagrams(String[] words) {
+        /*
+        Anagrams are the words that could be made by using letters from another word
+        Example 'abba' and 'baba' are anagrams
+         */
+
+         //craete an ArrayList of Strings to return and store the output
+         List<String> output = new ArrayList<>();
+
+         //we will keep two String variables - 1. Prev and 2. curr
+         //we will compare Prev and curr - if they are same then they are anagrams
+         String prev = "";
+         String curr = "";
+
+         //iterate over the input Array String using for loops
+         int len = words.length;
+         for(int i = 0; i<len; i++)
+         {
+             //create a character array for storing the words[i]
+             //and sort it 
+             char[] ch = words[i].toCharArray();
+             Arrays.sort(ch); // logN
+
+             //convert the Character Array back to String using 'String valueOf()' method
+             curr = String.valueOf(ch); 
+
+             //compare if curr is equal to prev? if yes do nothing : else add it in the output list
+             if(!curr.equals(prev))
+             {
+                 output.add(words[i]);
+
+                 //update the curr to be the prev now
+                 prev = curr;
+             }
+         }
+        return output;
+    }
+}
