@@ -1,4 +1,4 @@
-//TC - O(NlogN) SC - words[i].length
+//TC - O(NlogN) SC - O(size of input array)
 
 class Solution {
     public List<String> removeAnagrams(String[] words) {
