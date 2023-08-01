@@ -1,0 +1,29 @@
+//TC - 2*O(logN)
+//SC - 2*O(length of strings)
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        //I just need to check if both s and t are anagrams of each other.
+        boolean result = false;
+
+        char charArrayS[] = s.toCharArray();
+        char charArrayT[] = t.toCharArray();
+
+        Arrays.sort(charArrayS);
+        Arrays.sort(charArrayT);
+
+        s = String.valueOf(charArrayS);
+        t = String.valueOf(charArrayT);
+
+        if(s.equals(t))
+        {
+            result = true;
+        }
+        else if(!s.equals(t))
+        {
+            result = false;
+        }
+        return result;
+    }
+}
