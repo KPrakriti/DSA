@@ -1,0 +1,47 @@
+APPROACH 1 - Brute Force 
+For each character generate substrings and check if its a pallindrom
+If yes, store its length and store the pallindrome
+The time complexity for this approach will be O(N^3)
+
+APPROACH 2 - TC - O(N^2) since exapnding around mid would take O(N) time and SC - O(1)
+
+Start checking from the middle of the string
+example S = "aaabbaaa" - start checking if s.charAt(left) == s.charAt(right)
+                         if yes do left -- and right ++ until we find s.charAt(left) != s.charAt(right)
+exampe S = "racecar" - if the length is odd then there will be a mid character whose pair won't be present 
+                       so we'll have to ignore it
+
+class Solution {
+    public String longestPalindrome(String s) {
+        if(s == null || s.length() < 1) return "";
+
+        int start  = 0;
+        int end = 0;
+
+        for(int i = 0; i<s.length(); i++)
+        {
+            int len1 = enpandFromMiddle(s,i,i);
+            int len2 = enpandFromMiddle(s,i,i+1);
+            int len = Math.max(len1,len2);
+
+            if(len > end - start)
+            {
+                start = i-((len-1)/2);
+                end = i+ (len/2);
+            }
+        }
+        return s.substring(start,end+1);
+    }
+
+    public int enpandFromMiddle(String s, int left, int right)
+    {
+        if(s == null || left > right) return 0;
+
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right))
+        {
+            left--;
+            right++;
+        }
+        return right-left-1;
+    }
+}
