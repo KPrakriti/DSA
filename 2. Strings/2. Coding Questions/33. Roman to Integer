@@ -1,0 +1,30 @@
+lass Solution {
+    public int romanToInt(String s) {
+        
+        //craete a hashmap to map all roman numerals to its integer value
+        Map<Character, Integer> mapRomanToInteger = new HashMap<>();
+        mapRomanToInteger.put('I' , 1);
+        mapRomanToInteger.put('V' , 5);
+        mapRomanToInteger.put('X' , 10);
+        mapRomanToInteger.put('L' , 50);
+        mapRomanToInteger.put('C' , 100);
+        mapRomanToInteger.put('D' , 500);
+        mapRomanToInteger.put('M' , 1000);
+
+        //create a result variable
+        int res = mapRomanToInteger.get(s.charAt(s.length()-1));
+
+        for(int i = s.length()-2; i>=0; i--)
+        {
+            if(mapRomanToInteger.get(s.charAt(i)) < mapRomanToInteger.get(s.charAt(i+1)))
+            {
+                res -= mapRomanToInteger.get(s.charAt(i));
+            }
+            else
+            {
+                res += mapRomanToInteger.get(s.charAt(i));
+            }
+        }
+        return res;
+    }
+}
