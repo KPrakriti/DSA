@@ -43,34 +43,37 @@ APPROACH 2: OPTIMIZED: TC O(N)
 5. If you never find the freq[S.charAt(i) == 1 then put '$' in ans (mentioned in question)
 6. Return ans
 
-class Solution
-{
-    //Function to find the first non-repeating character in a string.
-    static char nonrepeatingCharacter(String S)
+class HelloWorld {
+    public static void main(String[] args) {
+        String s = "abcdabce";
+        int len = s.length();
+        char result = firstNonRepeatingCharacter(s,len);
+        System.out.println("The first non repeating charater in" + " " + s + " " + "is" + " " + result + ".");
+    }
+    
+    static char firstNonRepeatingCharacter(String str, int length)
     {
-        int[] freq = new int[128];
-        char ans = ' ';
-        for(int i = 0; i<freq.length; i++)
+        //create a character ans to store the output
+        char output = ' ';
+        
+        //create a freq array
+        int[] freq = new int[26];
+        
+        //iterate in input string and fill the freq array
+        for(int i = 0; i<length; i++)
         {
-            freq[i] = 0;
+            freq[str.charAt(i)-'a']++;
         }
-        for(int i = 0; i<S.length(); i++)
+        
+        //check for the first non repeating character
+        for(int i = 0; i<length; i++)
         {
-            freq[S.charAt(i)] = freq[S.charAt(i)]+1;
-        }
-        for(int i = 0; i<S.length(); i++)
-        {
-            if(freq[S.charAt(i)] == 1)
+            if(freq[str.charAt(i)-'a'] == 1)
             {
-                ans = S.charAt(i);
+                output = str.charAt(i);
                 break;
             }
-            else
-            {
-                ans = '$';
-            }
         }
-        return ans;
+        return output;
     }
 }
-
