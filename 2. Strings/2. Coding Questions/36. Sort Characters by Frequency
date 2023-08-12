@@ -1,0 +1,61 @@
+1. APPROACH 1 - USING FREQUENCY ARRAY
+//TC - O(NlogN)
+//SC - O(N)
+
+class Solution {
+    class Pair{
+        char ch;
+        int count;
+
+        //create a constructor to initialize char and count
+        Pair(char ch, int count)
+        {
+            this.ch = ch;
+            this.count = count;
+        }
+    }
+    public String frequencySort(String s) {
+        //cretae a frequency array of size 125 because the input may have small alphabets, capital alphabeta and digits
+        int[] arr = new int[125];
+
+        //run a loop over the input string and update the frequencies in arr
+        for(char ch : s.toCharArray())
+        {
+            arr[ch]++;
+        }
+
+        //create a linked list of type class pair to store the characters and count
+        LinkedList<Pair> freq_list = new LinkedList<>();
+
+        //iterate over the arr for the characters where the frequency is more than 0 and add them in the freq_list
+        for(int i = 48; i<=122; i++) //i starting from 48 because ascii value of digits starts from 48
+        {
+            if(arr[i]>0)
+            {
+                freq_list.add(new Pair((char)i,arr[i])); //adding pair of character and count
+            }
+        }
+
+        //now the freq_list is ready with the characters and count
+        //we need to sort them 
+        Collections.sort(freq_list,new Comparator<Pair>()
+        {
+            public int compare(Pair a, Pair b)
+            {
+                return b.count - a.count;
+            }
+        });
+
+        //append the characters
+        StringBuilder sb = new StringBuilder();
+        for(Pair p : freq_list)
+        {
+            int count = p.count;
+            while(count-->0)
+            {
+                sb.append(p.ch);
+            }
+        }
+        return sb.toString();
+    }
+}
