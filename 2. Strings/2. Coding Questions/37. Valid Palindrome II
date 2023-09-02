@@ -1,0 +1,39 @@
+//Two pointers
+//Strings
+//Greedy
+
+class Solution {
+    public boolean validPalindrome(String s) {
+        //using 2 pointers approach
+        int pointerA = 0;
+        int pointerB = s.length()-1;
+
+        while(pointerA <= pointerB)
+        {
+            if(s.charAt(pointerA) != s.charAt(pointerB))
+            {
+                return helperMethod(s,pointerA+1,pointerB) || helperMethod(s,pointerA,pointerB-1);
+            }
+            pointerA++;
+            pointerB--;
+        }
+        return true;
+    }
+    
+    public boolean helperMethod(String s, int i, int j)
+    {
+        int pointerA = i;
+        int pointerB = j;
+
+        while(pointerA <= pointerB)
+        {
+            if(s.charAt(pointerA) != s.charAt(pointerB))
+            {
+                return false;
+            }
+            pointerA++;
+            pointerB--;
+        }
+        return true;
+    }
+}
