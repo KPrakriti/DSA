@@ -1,0 +1,51 @@
+1. Brute - Using Sorting
+TC O(NlogN)
+SC O(1)
+class Solution {
+    public int numberOfPoints(List<List<Integer>> nums) {
+        Collections.sort(nums, (a,b)-> a.get(0) - b.get(0));
+
+
+        int start = nums.get(0).get(0);
+        int end = nums.get(0).get(1);
+        int ans = end - start + 1;
+        for(int i = 1; i<nums.size(); i++)
+        {
+            int currStart = nums.get(i).get(0);
+            int currEnd = nums.get(i).get(1);
+
+
+            if(currEnd > end)
+            {
+                //if overlap
+                if(currStart <= end)
+                {
+                    ans += currEnd - end;
+                }
+                //if no overlap
+                if(currStart > end)
+                {
+                    ans += currEnd - currStart + 1;
+                }
+                end = currEnd;
+            }
+            start = currStart;
+        }
+        return ans;
+    }
+}
+
+Better - using HashSet
+TC - O(N) 
+SC - O(N)
+class Solution {
+    public int numberOfPoints(List<List<Integer>> nums) {
+        Set<Integer> set = new HashSet();
+        for(List<Integer> points : nums) {
+            for(int i = points.get(0); i <= points.get(1); i++) {
+                set.add(i);
+            }
+        }
+        return set.size();
+    }
+}
